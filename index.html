@@ -1,82 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mīmāṁsā Math Portal</title>
+    <title>Mīmāṃsā Math Portal</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-    <header class="hero-section">
-        <div class="navbar">
-            <div class="logo">Mīmāṁsā Math Portal</div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#notices">Notices</a></li>
-                    <li><a href="#assignments">Assignments</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="hero-content">
-            <h1>Welcome to Mīmāṁsā</h1>
-            <p>Where Mathematics Meets Curiosity</p>
-            <a href="#notices" class="btn">View Notices</a>
-        </div>
+
+    <header class="navbar">
+        <div class="logo">Mīmāṃsā Math Portal</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#notices">Notices</a></li>
+                <li><a href="#assignments">Assignments</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section id="notices" class="notices-section">
-        <h2>Latest Notices</h2>
-        <ul id="notices-list">
-            <!-- Notices will be dynamically added here -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to Mīmāṃsā</h1>
+            <p>Where Mathematics Meets Curiosity</p>
+            <a href="#notices" class="btn-primary">View Notices</a>
+        </div>
+    </section>
+
+    <section id="notices" class="section">
+        <h2>Notices</h2>
+        <ul class="notice-list">
+            <li><i class="fas fa-bell"></i> Upcoming Assignment Deadline: April 15, 2025</li>
+            <li><i class="fas fa-bell"></i> Math Workshop on April 20, 2025</li>
         </ul>
     </section>
 
-    <section id="assignments" class="assignments-section">
+    <section id="assignments" class="section">
         <h2>Assignments</h2>
-        <div class="assignment-container">
-            <div class="assignment">
-                <h3>Assignment 1</h3>
-                <p>Topic: Algebraic Structures</p>
-                <a href="assignments/assignment1.pdf" download>Download PDF</a>
-            </div>
-            <div class="assignment">
-                <h3>Assignment 2</h3>
-                <p>Topic: Calculus</p>
-                <a href="assignments/assignment2.pdf" download>Download PDF</a>
-            </div>
-        </div>
+        <ul class="assignment-list">
+            <li><i class="fas fa-file-pdf"></i> <a href="assignments/assignment1.pdf" target="_blank">Assignment 1</a></li>
+            <li><i class="fas fa-file-pdf"></i> <a href="assignments/assignment2.pdf" target="_blank">Assignment 2</a></li>
+        </ul>
     </section>
 
-    <section id="contact" class="contact-section">
-        <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:math@mimamsa.com">math@mimamsa.com</a></p>
-    </section>
-
-    <footer>
-        <p>Mīmāṁsā Math Portal &copy; 2025. All Rights Reserved.</p>
+    <footer id="contact">
+        <p>Contact us at <a href="mailto:mimamsa@mathportal.com">mimamsa@mathportal.com</a></p>
+        <p>Mīmāṃsā Math Portal © 2025. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        // Example Notices (Dynamically Add Notices)
-        const notices = [
-            "Next meeting is scheduled for April 10th at 5 PM.",
-            "Assignment 1 due by April 15th.",
-            "Mid-term review session on April 8th."
-        ];
-
-        const noticesList = document.getElementById('notices-list');
-        notices.forEach(notice => {
-            const li = document.createElement('li');
-            li.textContent = notice;
-            noticesList.appendChild(li);
-        });
-    </script>
 </body>
-
 </html>
