@@ -2,27 +2,31 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    scroll-behavior: smooth;
+    background-color: #1e1e1e;
+    color: #ffffff;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: #3f51b5;
+    background-color: #3b5998;
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    font-size: 20px;
+    font-weight: bold;
     color: white;
 }
 
 .navbar ul {
-    display: flex;
     list-style: none;
+    display: flex;
 }
 
 .navbar ul li {
@@ -30,81 +34,70 @@ body {
 }
 
 .navbar ul li a {
-    text-decoration: none;
     color: white;
+    text-decoration: none;
     font-weight: bold;
 }
 
 .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-image.jpg') center/cover;
-    height: 100vh;
+    height: 90vh;
+    background: linear-gradient(to bottom right, #34495e, #2c3e50);
     display: flex;
-    justify-content: center;
     align-items: center;
-    color: white;
+    justify-content: center;
     text-align: center;
+    color: white;
 }
 
-.hero-section h1 {
+.hero-content h1 {
     font-size: 3rem;
     margin-bottom: 10px;
 }
 
-.hero-section p {
-    font-size: 1.2rem;
+.hero-content p {
+    font-size: 1.5rem;
 }
 
-.btn {
-    padding: 10px 20px;
-    background-color: #ff5722;
+.btn-primary {
+    margin-top: 20px;
+    display: inline-block;
+    background-color: #e67e22;
     color: white;
-    border: none;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s ease;
 }
 
-.btn:hover {
-    background-color: #e64a19;
+.btn-primary:hover {
+    background-color: #d35400;
 }
 
-.notices-section, .assignments-section, .contact-section {
-    padding: 50px;
-    background-color: white;
-    margin: 40px auto;
-    border-radius: 10px;
-    width: 80%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.section {
+    padding: 40px;
+    background-color: #ecf0f1;
+    color: #2c3e50;
 }
 
-.notices-section h2, .assignments-section h2, .contact-section h2 {
+h2 {
     text-align: center;
     margin-bottom: 20px;
+    color: #333;
 }
 
-.assignment-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.assignment {
-    width: 45%;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
+.notice-list, .assignment-list {
+    list-style: none;
+    padding-left: 0;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.assignment h3 {
+.notice-list li, .assignment-list li {
     margin-bottom: 10px;
 }
 
 footer {
-    background-color: #3f51b5;
-    color: white;
     text-align: center;
     padding: 20px;
-    position: relative;
+    background-color: #3b5998;
+    color: white;
 }
