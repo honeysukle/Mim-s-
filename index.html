@@ -3,40 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mīmāṁsā Math Portal</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Mīmāṃsā Math Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-900">
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <h1>Mīmāṁsā Math Portal</h1>
-        <button id="darkModeToggle">Toggle Dark Mode</button>
-    </nav>
+    <header class="p-6 bg-blue-700 text-white text-center">
+        <h1 class="text-5xl font-bold">Mīmāṃsā Math Portal</h1>
+    </header>
 
-    <!-- Parallax Section -->
-    <section class="parallax">Explore the World of Mathematics</section>
+    <main class="container mx-auto my-8">
+        <!-- Notices Section -->
+        <section id="notices" class="bg-white shadow rounded-lg p-6 mb-6">
+            <h2 class="text-4xl font-semibold mb-4">Notices</h2>
+            <ul id="noticeList" class="space-y-3">
+                <!-- Dynamic Notices will be added here -->
+            </ul>
+        </section>
 
-    <!-- Assignments Section -->
-    <section id="assignments" class="container"></section>
+        <!-- Admin Login Section -->
+        <section id="adminLoginSection" class="bg-white shadow rounded-lg p-6 text-center">
+            <h2 class="text-3xl font-semibold mb-4">Admin Login</h2>
+            <input type="password" id="adminPassword" placeholder="Enter Admin Password" 
+                   class="p-2 border border-gray-300 rounded-lg">
+            <button id="loginButton" class="mt-4 p-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-800">
+                Login
+            </button>
+        </section>
 
-    <!-- Progress Chart Section -->
-    <section>
-        <canvas id="progressChart"></canvas>
-    </section>
+        <!-- Admin Panel (Hidden by Default) -->
+        <section id="adminPanel" class="hidden bg-white shadow rounded-lg p-6">
+            <h2 class="text-3xl font-semibold mb-4">Admin Dashboard</h2>
+            
+            <!-- Form to Add Notices -->
+            <form id="noticeForm" class="space-y-4">
+                <div>
+                    <label for="noticeMessage" class="block text-lg font-medium">Notice:</label>
+                    <input type="text" id="noticeMessage" placeholder="Type your notice here" 
+                           class="w-full p-2 border border-gray-300 rounded-lg">
+                </div>
+                <div>
+                    <label for="noticeDate" class="block text-lg font-medium">Date:</label>
+                    <input type="date" id="noticeDate" class="w-full p-2 border border-gray-300 rounded-lg">
+                </div>
+                <button type="submit" class="mt-4 p-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-800">
+                    Add Notice
+                </button>
+            </form>
 
-    <!-- Contact Form Section -->
-    <section id="contact">
-        <form>
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Your Email">
-            <textarea placeholder="Your Message"></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
+            <button id="logoutButton" class="mt-4 p-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-800">
+                Logout
+            </button>
+        </section>
+    </main>
 
-    <script src="script.js"></script>
+    <footer class="p-6 bg-blue-700 text-white text-center">
+        <p>Mīmāṃsā Math Portal © 2025</p>
+    </footer>
+
+    <script>
+        // Admin Password (Set it securely!)
+        const adminPassword = "mimamsa123";
+
+        // DOM Elements
+        const adminLoginSection = document.getElementById('adminLoginSection');
+        const adminPanel = document.getElementById('adminPanel');
+        const loginButton = document.getElementById('loginButton');
+        const logoutButton = document.getElementById('logoutButton');
+        const noticeForm = document.getElementById('noticeForm');
+        const noticeList = document.getElementById('noticeList');
+
+        // Handle Login
+        loginButton.addEventListener('click', function () {
+            const passwordInput = document.getElementById('adminPassword').value;
+            if (passwordInput === adminPassword) {
+                adminLoginSection.classList.add('hidden');  // Hide login form
+                adminPanel.classList.remove('hidden');     // Show admin panel
+            } else {
+                alert("Incorrect password. Access denied.");
+            }
+        });
+
+        // Handle Logout
+        logoutButton.addEventListener('click', function () {
+            adminLoginSection.classList.remove('hidden');  // Show login form
+            adminPanel.classList.add('hidden');           // Hide admin panel
+        });
+
+        // Handle Adding New Notices
+        noticeForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const noticeMessage = document.getElementById('noticeMessage').value;
+            const noticeDate = document.getElementById('noticeDate').value;
+
+            if (noticeMessage && noticeDate) {
+                // Create a new list item with the notice message and date
+                const li = document.createElement('li');
+                li.className = 'p-3 border border-gray-200 rounded-lg bg-gray-50 shadow';
+                li.textContent = `${noticeDate}: ${noticeMessage}`;
+
+                // Add the notice to the list
+                noticeList.appendChild(li);
+
+                // Clear form inputs
+                document.getElementById('noticeMessage').value = '';
+                document.getElementById('noticeDate').value = '';
+            } else {
+                alert("Please enter both a notice and a date.");
+            }
+        });
+    </script>
+
 </body>
 </html>
