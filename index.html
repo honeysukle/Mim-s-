@@ -1,59 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mīmāṃsā Math Portal</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Mīmāṁsā Math Portal</title>
+
+    <!-- Styles and Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@6.5.1/dist/framer-motion.umd.js"></script>
+
+    <style>
+        .parallax {
+            background-image: url('https://source.unsplash.com/1600x900/?math');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+        }
+
+        .neumorphic {
+            background: #e0e0e0;
+            border-radius: 12px;
+            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+            padding: 20px;
+        }
+
+        body.dark {
+            background-color: #121212;
+            color: white;
+        }
+
+        body.dark .neumorphic {
+            background: #222;
+            box-shadow: 20px 20px 60px #1a1a1a, -20px -20px 60px #2a2a2a;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <header class="p-6 bg-blue-700 text-white text-center">
-        <h1 class="text-5xl font-bold">Mīmāṃsā Math Portal</h1>
-    </header>
 
-    <main class="container mx-auto my-8">
-        <section id="notices" class="bg-white shadow rounded-lg p-6 mb-6">
-            <h2 class="text-4xl font-semibold mb-4">Notices</h2>
-            <ul id="noticeList" class="space-y-3"></ul>
-        </section>
+<body class="transition-colors duration-500">
+    <!-- Navbar -->
+    <nav class="p-6 flex justify-between items-center">
+        <h1 class="text-3xl font-bold">Mīmāṁsā Math Portal</h1>
+        <button id="darkModeToggle" class="px-4 py-2 rounded-lg bg-blue-500 text-white">Toggle Dark Mode</button>
+    </nav>
 
-        <section id="adminLoginSection" class="bg-white shadow rounded-lg p-6 text-center">
-            <h2 class="text-3xl font-semibold mb-4">Admin Login</h2>
-            <input type="password" id="adminPassword" placeholder="Enter Admin Password" 
-                   class="p-2 border border-gray-300 rounded-lg">
-            <button id="loginButton" class="mt-4 p-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-800">
-                Login
-            </button>
-        </section>
+    <!-- Parallax Section -->
+    <section class="parallax flex items-center justify-center text-white text-4xl font-bold animate__animated animate__fadeIn">
+        Explore the World of Mathematics
+    </section>
 
-        <section id="adminPanel" class="hidden bg-white shadow rounded-lg p-6">
-            <h2 class="text-3xl font-semibold mb-4">Admin Dashboard</h2>
-            <form id="noticeForm" class="space-y-4">
-                <div>
-                    <label for="noticeMessage" class="block text-lg font-medium">Notice:</label>
-                    <input type="text" id="noticeMessage" placeholder="Type your notice here" 
-                           class="w-full p-2 border border-gray-300 rounded-lg">
-                </div>
-                <div>
-                    <label for="noticeDate" class="block text-lg font-medium">Date:</label>
-                    <input type="date" id="noticeDate" class="w-full p-2 border border-gray-300 rounded-lg">
-                </div>
-                <button type="submit" class="mt-4 p-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-800">
-                    Add Notice
-                </button>
+    <!-- Assignments and Notices Section -->
+    <section class="container mx-auto p-12">
+        <h2 class="text-4xl font-bold mb-6 text-center">Assignments & Notices</h2>
+        <div id="assignmentsGrid" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3"></div>
+
+        <h2 class="text-3xl font-bold mt-12 mb-4">Notices</h2>
+        <ul id="noticesList" class="list-disc pl-8"></ul>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">Resources</h2>
+            <ul class="space-y-4">
+                <li><a href="Reading.pdf" target="_blank" class="text-blue-500 hover:underline">Download: Mīmāṁsā Number Theory PDF</a></li>
+                <li><a href="https://arxiv.org/" target="_blank" class="text-blue-500 hover:underline">ArXiv - Mathematics Research Papers</a></li>
+                <li><a href="https://mathworld.wolfram.com/" target="_blank" class="text-blue-500 hover:underline">Wolfram MathWorld</a></li>
+                <li><a href="https://ocw.mit.edu/courses/mathematics" target="_blank" class="text-blue-500 hover:underline">MIT OpenCourseWare - Mathematics</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-300 py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4">Contact Us</h2>
+            <p class="mb-6">If you have any questions, reach out to us!</p>
+            <form class="space-y-4">
+                <input type="text" placeholder="Your Name" class="block w-1/2 mx-auto p-3 rounded-lg border">
+                <input type="email" placeholder="Your Email" class="block w-1/2 mx-auto p-3 rounded-lg border">
+                <textarea placeholder="Your Message" class="block w-1/2 mx-auto p-3 rounded-lg border"></textarea>
+                <button type="submit" class="px-6 py-3 rounded-lg bg-blue-500 text-white hover:bg-blue-600">Send Message</button>
             </form>
+        </div>
+    </section>
 
-            <button id="logoutButton" class="mt-4 p-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-800">
-                Logout
-            </button>
-        </section>
-    </main>
+    <!-- Chart Section -->
+    <section class="py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4">Mathematics Progress</h2>
+            <canvas id="mathProgressChart" width="400" height="200"></canvas>
+        </div>
+    </section>
 
-    <footer class="p-6 bg-blue-700 text-white text-center">
-        <p>Mīmāṃsā Math Portal © 2025</p>
+    <footer class="p-6 text-center bg-gray-900 text-white">
+        &copy; 2025 Mīmāṁsā Math Portal - All Rights Reserved
     </footer>
 
-    <script src="script.js"></script> <!-- External JS File -->
+    <!-- JavaScript Code -->
+    <script src="script.js"></script>
 </body>
+
 </html>
