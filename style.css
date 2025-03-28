@@ -1,84 +1,38 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Base styles for form elements */
+input, textarea {
+    outline: none;
+    border: 2px solid #d1d5db; /* Light gray */
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f3f4f6;
-    color: #333;
+input:focus, textarea:focus {
+    border-color: #2563eb; /* Blue on focus */
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.3); /* Soft glow effect */
 }
 
-.navbar {
-    background-color: #3b82f6;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    list-style: none;
+button:hover {
+    transform: translateY(-2px); /* Small upward animation */
 }
 
-.navbar li {
-    margin: 0 15px;
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
 }
 
-.navbar a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-}
-
-.logo {
-    font-weight: bold;
-    font-size: 20px;
-}
-
+/* For Hero Section Background Overlay */
 .main-section {
-    height: 100vh;
-    background-color: #1e293b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    background-blend-mode: darken;
 }
 
-.main-section h1 {
-    color: white;
-    font-size: 40px;
+/* Card styling in assignments section */
+.assignment-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.main-section p {
-    color: #d1d5db;
-    font-size: 20px;
-}
-
-.btn {
-    display: inline-block;
-    background-color: #ef4444;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 20px;
-}
-
-.container {
-    max-width: 800px;
-    margin: 50px auto;
-    text-align: left;
-}
-
-.notice-list, .assignment-list, .resource-links {
-    list-style: none;
-}
-
-.notice-list li, .assignment-list li {
-    margin-bottom: 10px;
-}
-
-footer {
-    background-color: #1e293b;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .nav ul {
+        flex-direction: column;
+    }
 }
