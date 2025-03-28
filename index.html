@@ -3,160 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mīmāṁsā Math Portal</title>
-    <link rel="icon" href="favicon.ico">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>Mīmāṃsā Math Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        /* Custom Styling for Backgrounds and Parallax */
-        .main-section {
-            background-image: url('math-background.jpg');
+        /* Smooth fade-in animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Parallax Background */
+        .parallax {
+            background-image: url('https://source.unsplash.com/1600x900/?math');
+            background-attachment: fixed;
             background-size: cover;
             background-position: center;
-            background-blend-mode: overlay;
-            background-color: rgba(0, 0, 0, 0.5);
+            height: 500px;
         }
 
-        /* Dark Mode Styles */
-        .dark-mode {
-            background-color: #1a202c;
-            color: #f7fafc;
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .dark-mode .btn {
-            background-color: #4a5568;
+        /* Dark mode styling */
+        body.dark {
+            background-color: #121212;
             color: white;
         }
-    </style>
-    <script>
-        AOS.init(); // Initialize AOS (Animate on Scroll)
 
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
+        body.dark .glass {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.1);
         }
-    </script>
+    </style>
 </head>
-<body class="font-sans bg-gray-100">
+<body class="transition-colors duration-500">
 
-    <!-- Navigation Bar -->
-    <header>
-        <nav class="fixed w-full bg-black text-white z-50 shadow-lg">
-            <div class="container mx-auto p-4 flex justify-between items-center">
-                <a href="#home" class="text-2xl font-bold">Mīmāṁsā Math Portal</a>
-                <ul class="flex space-x-4">
-                    <li><a href="#notices" class="hover:text-blue-300">Notices</a></li>
-                    <li><a href="#assignments" class="hover:text-blue-300">Assignments</a></li>
-                    <li><a href="#resources" class="hover:text-blue-300">Resources</a></li>
-                    <li><a href="#contact" class="hover:text-blue-300">Contact</a></li>
-                    <li><button onclick="toggleDarkMode()" class="ml-4 p-2 border rounded-lg bg-gray-700 hover:bg-gray-500">Toggle Dark Mode</button></li>
-                </ul>
+    <!-- Navbar -->
+    <nav class="p-6 flex justify-between items-center">
+        <h1 class="text-3xl font-bold">Mīmāṃsā Math Portal</h1>
+        <button id="darkModeToggle" class="px-4 py-2 rounded-lg bg-blue-500 text-white">Toggle Dark Mode</button>
+    </nav>
+
+    <!-- Parallax Section -->
+    <section class="parallax flex items-center justify-center text-white text-4xl font-bold">
+        Explore the World of Mathematics
+    </section>
+
+    <section class="container mx-auto p-12">
+        <!-- Assignments Section -->
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div class="p-6 glass rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 transition transform">
+                <h3 class="text-2xl font-bold">Assignment 1: Number Theory</h3>
+                <p>Due Date: 5th April 2025</p>
             </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section with Parallax Effect -->
-    <section id="home" class="main-section min-h-screen flex items-center justify-center text-center text-white">
-        <div>
-            <h1 class="text-5xl font-extrabold mb-4">Welcome to Mīmāṁsā</h1>
-            <p class="text-xl mb-6">Where Mathematics Meets Curiosity and Research Begins</p>
-            <a href="#notices" class="bg-white text-blue-600 px-6 py-3 rounded-full hover:bg-blue-100 transition transform hover:scale-105">View Notices</a>
+            <div class="p-6 glass rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 transition transform">
+                <h3 class="text-2xl font-bold">Assignment 2: Functions</h3>
+                <p>Due Date: 12th April 2025</p>
+            </div>
         </div>
     </section>
 
-    <!-- Notices Section with AOS Animation -->
-    <section id="notices" data-aos="fade-up" class="py-12">
+    <!-- Resources Section -->
+    <section id="resources" class="py-12">
         <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-6">Important Notices</h2>
+            <h2 class="text-4xl font-bold mb-6 fade-in">Resources</h2>
             <ul class="space-y-4">
-                <li class="bg-white shadow-lg p-4 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-bell text-blue-600 mr-4"></i> Upcoming Seminar: "Number Theory" – 14th April 2025
-                </li>
-                <li class="bg-white shadow-lg p-4 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-book text-green-600 mr-4"></i> Assignment Submission Deadline Extended to 10th April 2025
-                </li>
-                <li class="bg-white shadow-lg p-4 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-graduation-cap text-purple-600 mr-4"></i> Workshop: "Advanced Number Theory"
-                </li>
+                <li><a href="Reading.pdf" target="_blank" class="text-blue-500 hover:underline">Download: Mīmāṃsā Number Theory PDF</a></li>
+                <li><a href="https://arxiv.org/" target="_blank" class="text-blue-500 hover:underline">ArXiv - Mathematics Research Papers</a></li>
+                <li><a href="https://mathworld.wolfram.com/" target="_blank" class="text-blue-500 hover:underline">Wolfram MathWorld</a></li>
+                <li><a href="https://ocw.mit.edu/courses/mathematics" target="_blank" class="text-blue-500 hover:underline">MIT OpenCourseWare - Mathematics</a></li>
             </ul>
         </div>
     </section>
 
-    <!-- Assignments Section with Cards -->
-    <section id="assignments" class="bg-gray-200 py-12">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-6">Assignments</h2>
-            <p class="mb-8">Weekly assignments designed to enhance your mathematical problem-solving skills.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                <div class="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl">
-                    <h3 class="text-2xl font-bold mb-2">Assignment 1: Number Theory</h3>
-                    <p>Due Date: 5th April 2025</p>
-                </div>
-                <div class="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl">
-                    <h3 class="text-2xl font-bold mb-2">Assignment 2: Functions</h3>
-                    <p>Due Date: 12th April 2025</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    
-    <!-- Resources Section with External Links -->
-    <section id="resources" class="py-12">
-    <div class="container mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-6">Resources</h2>
-        <ul class="space-y-4">
-            <li>
-                <a href="Reading.pdf" target="_blank" class="text-blue-500 hover:underline">
-                    Download: Mīmāṁsā Number Theory PDF
-                </a>
-            </li>
-            <li>
-                <a href="https://arxiv.org/" target="_blank" class="text-blue-500 hover:underline">
-                    ArXiv - Mathematics Research Papers
-                </a>
-            </li>
-            <li>
-                <a href="https://mathworld.wolfram.com/" target="_blank" class="text-blue-500 hover:underline">
-                    Wolfram MathWorld
-                </a>
-            </li>
-            <li>
-                <a href="https://ocw.mit.edu/courses/mathematics/" target="_blank" class="text-blue-500 hover:underline">
-                    MIT OpenCourseWare – Mathematics
-                </a>
-            </li>
-        </ul>
-    </div>
-</section
-
-
-
-    <!-- Contact Section with Form -->
+    <!-- Contact Section -->
     <section id="contact" class="bg-gray-300 py-12">
         <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-6">Contact Us</h2>
-            <p class="mb-4">If you have any questions or would like to collaborate, feel free to reach out!</p>
-            <form id="contact-form" class="bg-white p-8 rounded-lg shadow-lg mx-auto w-full md:w-1/2">
-                <input type="text" placeholder="Your Name" required class="w-full mb-4 p-2 border rounded-lg">
-                <input type="email" placeholder="Your Email" required class="w-full mb-4 p-2 border rounded-lg">
-                <textarea placeholder="Your Message" required class="w-full mb-4 p-2 border rounded-lg"></textarea>
-                <button type="submit" class="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Send Message</button>
+            <h2 class="text-4xl font-bold mb-4 fade-in">Contact Us</h2>
+            <p class="mb-6">If you have any questions, reach out to us!</p>
+            <form class="space-y-4">
+                <input type="text" placeholder="Your Name" class="block w-1/2 mx-auto p-3 rounded-lg border">
+                <input type="email" placeholder="Your Email" class="block w-1/2 mx-auto p-3 rounded-lg border">
+                <textarea placeholder="Your Message" class="block w-1/2 mx-auto p-3 rounded-lg border"></textarea>
+                <button type="submit" class="px-6 py-3 rounded-lg bg-blue-500 text-white hover:bg-blue-600">Send Message</button>
             </form>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black text-white py-4">
-        <p class="text-center">&copy; 2025 Mīmāṁsā Math Portal. Follow us on: 
-            <a href="#" class="text-blue-400"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="text-blue-400"><i class="fab fa-twitter"></i></a>
-        </p>
-        <p class="text-center"><a href="#home" class="hover:underline">Back to Top</a></p>
-    </footer>
+    <script>
+        // Dark mode toggle script
+        const toggleButton = document.getElementById('darkModeToggle');
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+        });
+    </script>
 
 </body>
 </html>
