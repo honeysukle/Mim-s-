@@ -6,49 +6,86 @@
     <title>Mīmāṃsā Math Portal</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="favicon.ico">
+    <script src="script.js" defer></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-    <header class="navbar">
-        <div class="logo">Mīmāṃsā Math Portal</div>
+    <!-- Navigation Bar -->
+    <header>
         <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
+            <ul class="navbar">
+                <li><a href="#home" class="logo">Mīmāṃsā Math Portal</a></li>
                 <li><a href="#notices">Notices</a></li>
                 <li><a href="#assignments">Assignments</a></li>
+                <li><a href="#resources">Resources</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero-section">
-        <div class="hero-content">
+    <!-- Hero Section -->
+    <section id="home" class="main-section">
+        <div class="welcome">
             <h1>Welcome to Mīmāṃsā</h1>
-            <p>Where Mathematics Meets Curiosity</p>
-            <a href="#notices" class="btn-primary">View Notices</a>
+            <p>Where Mathematics Meets Curiosity and Research Begins</p>
+            <a href="#notices" class="btn">View Notices</a>
         </div>
     </section>
 
-    <section id="notices" class="section">
-        <h2>Notices</h2>
-        <ul class="notice-list">
-            <li><i class="fas fa-bell"></i> Upcoming Assignment Deadline: April 15, 2025</li>
-            <li><i class="fas fa-bell"></i> Math Workshop on April 20, 2025</li>
-        </ul>
+    <!-- Notices Section -->
+    <section id="notices">
+        <div class="container">
+            <h2>Important Notices</h2>
+            <ul class="notice-list">
+                <li><i class="fas fa-bell"></i> Upcoming Seminar: "Quantum Symmetries in Mathematical Physics" – 14th April 2025</li>
+                <li><i class="fas fa-book"></i> Assignment Submission Deadline Extended to 10th April 2025</li>
+                <li><i class="fas fa-graduation-cap"></i> Workshop: "Advanced Number Theory" – Registration Open Now!</li>
+            </ul>
+        </div>
     </section>
 
-    <section id="assignments" class="section">
-        <h2>Assignments</h2>
-        <ul class="assignment-list">
-            <li><i class="fas fa-file-pdf"></i> <a href="assignments/assignment1.pdf" target="_blank">Assignment 1</a></li>
-            <li><i class="fas fa-file-pdf"></i> <a href="assignments/assignment2.pdf" target="_blank">Assignment 2</a></li>
-        </ul>
+    <!-- Assignments Section -->
+    <section id="assignments">
+        <div class="container">
+            <h2>Assignments</h2>
+            <p>Challenge yourself with weekly assignments designed to enhance your mathematical problem-solving skills.</p>
+            <ul class="assignment-list">
+                <li><i class="fas fa-pencil-alt"></i> Assignment 1: Algebraic Topology – Due 5th April 2025</li>
+                <li><i class="fas fa-pencil-alt"></i> Assignment 2: Cryptography and Modular Arithmetic – Due 12th April 2025</li>
+            </ul>
+        </div>
     </section>
 
-    <footer id="contact">
-        <p>Contact us at <a href="mailto:mimamsa@mathportal.com">mimamsa@mathportal.com</a></p>
-        <p>Mīmāṃsā Math Portal © 2025. All Rights Reserved.</p>
+    <!-- Resources Section -->
+    <section id="resources">
+        <div class="container">
+            <h2>Resources</h2>
+            <p>Explore valuable materials to deepen your understanding of advanced mathematics:</p>
+            <ul class="resource-links">
+                <li><a href="https://arxiv.org/" target="_blank"><i class="fas fa-external-link-alt"></i> ArXiv - Mathematics Research Papers</a></li>
+                <li><a href="https://mathworld.wolfram.com/" target="_blank"><i class="fas fa-external-link-alt"></i> Wolfram MathWorld</a></li>
+                <li><a href="https://ocw.mit.edu/courses/mathematics/" target="_blank"><i class="fas fa-external-link-alt"></i> MIT OpenCourseWare – Mathematics</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or would like to collaborate, feel free to reach out!</p>
+            <form id="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Mīmāṃsā Math Portal. All Rights Reserved. <a href="#home">Back to Top</a></p>
     </footer>
 
 </body>
