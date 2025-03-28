@@ -1,156 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mīmāṁsā Math Portal</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/framer-motion@6.5.1/dist/framer-motion.umd.js"></script>
+    <title>Mīmāṃsā Math Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.2.4/tailwind.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Parallax Background */
-        .parallax {
-            background-image: url('https://source.unsplash.com/1600x900/?math');
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-            height: 500px;
-        }
-
-        /* Neumorphism Design */
-        .neumorphic {
-            background: #e0e0e0;
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
             padding: 20px;
-        }
-
-        /* Dark Mode Styling */
-        body.dark {
-            background-color: #121212;
-            color: white;
-        }
-
-        body.dark .neumorphic {
-            background: #222;
-            box-shadow: 20px 20px 60px #1a1a1a, -20px -20px 60px #2a2a2a;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
+<body class="bg-gray-900 text-white">
 
-<body class="transition-colors duration-500">
+    <header class="p-5 text-3xl font-bold text-center">Mīmāṃsā Math Portal</header>
+    <main class="flex flex-col items-center">
 
-    <!-- Navbar -->
-    <nav class="p-6 flex justify-between items-center">
-        <h1 class="text-3xl font-bold">Mīmāṁsā Math Portal</h1>
-        <button id="darkModeToggle" class="px-4 py-2 rounded-lg bg-blue-500 text-white">Toggle Dark Mode</button>
-    </nav>
+        <section class="text-center py-10">
+            <h1 class="text-4xl font-extrabold mb-4">Explore the World of Mathematics</h1>
+        </section>
 
-    <!-- Parallax Section -->
-    <section class="parallax flex items-center justify-center text-white text-4xl font-bold animate__animated animate__fadeIn">
-        Explore the World of Mathematics
-    </section>
+        <section class="w-4/5">
+            <h2 class="text-2xl font-bold mb-4">Assignments Tracker</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="card">
+                    <h3 class="text-xl font-semibold">Assignment 1: Number Theory</h3>
+                    <p>Due Date: 5th April 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold">Assignment 2: Functions</h3>
+                    <p>Due Date: 12th April 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold">Assignment 3: Calculus</h3>
+                    <p>Due Date: 19th April 2025</p>
+                </div>
+            </div>
+        </section>
 
-    <section class="container mx-auto p-12">
-        <!-- Assignments Section -->
-        <h2 class="text-4xl font-bold mb-6 text-center">Assignments Tracker</h2>
-        <div id="assignmentsGrid" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3"></div>
-    </section>
-
-    <!-- Resources Section -->
-    <section id="resources" class="py-12">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-6">Resources</h2>
-            <ul class="space-y-4">
-                <li><a href="Reading.pdf" target="_blank" class="text-blue-500 hover:underline">Download: Mīmāṁsā Number Theory PDF</a></li>
-                <li><a href="https://arxiv.org/" target="_blank" class="text-blue-500 hover:underline">ArXiv - Mathematics Research Papers</a></li>
-                <li><a href="https://mathworld.wolfram.com/" target="_blank" class="text-blue-500 hover:underline">Wolfram MathWorld</a></li>
-                <li><a href="https://ocw.mit.edu/courses/mathematics" target="_blank" class="text-blue-500 hover:underline">MIT OpenCourseWare - Mathematics</a></li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="bg-gray-300 py-12">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-4">Contact Us</h2>
-            <p class="mb-6">If you have any questions, reach out to us!</p>
-            <form class="space-y-4">
-                <input type="text" placeholder="Your Name" class="block w-1/2 mx-auto p-3 rounded-lg border">
-                <input type="email" placeholder="Your Email" class="block w-1/2 mx-auto p-3 rounded-lg border">
-                <textarea placeholder="Your Message" class="block w-1/2 mx-auto p-3 rounded-lg border"></textarea>
-                <button type="submit" class="px-6 py-3 rounded-lg bg-blue-500 text-white hover:bg-blue-600">Send Message</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Chart Section -->
-    <section class="py-12">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-4">Mathematics Progress</h2>
-            <canvas id="mathProgressChart" width="400" height="200"></canvas>
-        </div>
-    </section>
-
-    <footer class="p-6 text-center bg-gray-900 text-white">
-        &copy; 2025 Mīmāṁsā Math Portal - All Rights Reserved
-    </footer>
+        <section class="mt-10 w-4/5">
+            <h2 class="text-2xl font-bold mb-4">Progress Tracker</h2>
+            <canvas id="progressChart"></canvas>
+        </section>
+    </main>
 
     <script>
-        // Assignments data (stored locally)
-        const assignments = [
-            { title: 'Assignment 1: Number Theory', dueDate: '5th April 2025' },
-            { title: 'Assignment 2: Functions', dueDate: '12th April 2025' },
-            { title: 'Assignment 3: Calculus', dueDate: '19th April 2025' }
-        ];
-
-        // Display assignments dynamically
-        const grid = document.getElementById('assignmentsGrid');
-        assignments.forEach(assignment => {
-            const div = document.createElement('div');
-            div.classList.add('p-6', 'neumorphic', 'rounded-lg', 'shadow-lg', 'hover:scale-105', 'transition', 'transform');
-            div.innerHTML = `<h3 class="text-2xl font-bold">${assignment.title}</h3><p>Due Date: ${assignment.dueDate}</p>`;
-            grid.appendChild(div);
-        });
-
-        // Dark mode toggle
-        const toggleButton = document.getElementById('darkModeToggle');
-        toggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            localStorage.setItem('darkMode', document.body.classList.contains('dark'));
-        });
-
-        // Load saved dark mode preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark');
-        }
-
-        // Chart.js - Interactive progress chart
-        const ctx = document.getElementById('mathProgressChart').getContext('2d');
+        const ctx = document.getElementById('progressChart').getContext('2d');
         new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Assignment 1', 'Assignment 2', 'Assignment 3'],
                 datasets: [{
                     label: 'Score Progress',
-                    data: [85, 90, 95],
-                    backgroundColor: ['rgba(75, 192, 192, 0.2)'],
-                    borderColor: ['rgba(75, 192, 192, 1)'],
-                    borderWidth: 2
+                    data: [80, 90, 85],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
                 }]
             },
             options: {
-                responsive: true,
                 scales: {
-                    y: { beginAtZero: true }
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
         });
     </script>
-</body>
 
+</body>
 </html>
