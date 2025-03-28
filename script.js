@@ -1,13 +1,22 @@
-// Dark Mode Toggle
-const toggleDarkMode = document.getElementById('toggle-dark-mode');
-toggleDarkMode.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    toggleDarkMode.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
-});
+// Wait for DOM content to load
+document.addEventListener('DOMContentLoaded', function () {
+    // Dark Mode Toggle
+    const toggleButton = document.querySelector('.toggle-btn');
+    toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+    });
 
-// Form Submission - Simple confirmation (You can replace this with backend integration)
-document.getElementById('contact-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert("Your message has been sent! Thank you for contacting us.");
-    e.target.reset(); // Reset form fields after submission
+    // Scroll Animation for Sections
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
 });
