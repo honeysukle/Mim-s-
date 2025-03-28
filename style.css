@@ -2,97 +2,74 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-body, html {
-    height: 100%; /* Ensure full height */
 }
 
 body {
-    background-color: #1e1e1e;
-    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f4f6;
+    color: #333;
 }
 
 .navbar {
+    background-color: #3b82f6;
+    padding: 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #3b5998;
-    padding: 10px 20px;
-}
-
-.navbar .logo {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-}
-
-.navbar ul {
+    justify-content: center;
     list-style: none;
-    display: flex;
 }
 
-.navbar ul li {
-    margin-left: 20px;
+.navbar li {
+    margin: 0 15px;
 }
 
-.navbar ul li a {
-    color: white;
+.navbar a {
     text-decoration: none;
-    font-weight: bold;
+    color: white;
+    font-size: 18px;
 }
 
-.hero-section {
-    height: 100vh; /* Full-screen height */
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.main-section {
+    height: 100vh;
+    background-color: #1e293b;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(to bottom right, #34495e, #2c3e50);
+}
+
+.main-section h1 {
     color: white;
+    font-size: 40px;
 }
 
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+.main-section p {
+    color: #d1d5db;
+    font-size: 20px;
 }
 
-.hero-content p {
-    font-size: 1.5rem;
-}
-
-.btn-primary {
-    margin-top: 20px;
+.btn {
     display: inline-block;
-    background-color: #e67e22;
+    background-color: #ef4444;
     color: white;
     padding: 10px 20px;
-    border-radius: 25px;
+    border-radius: 5px;
     text-decoration: none;
-    font-weight: bold;
+    margin-top: 20px;
 }
 
-.btn-primary:hover {
-    background-color: #d35400;
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: left;
 }
 
-.section {
-    padding: 40px;
-    background-color: #ecf0f1;
-    color: #2c3e50;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.notice-list, .assignment-list {
+.notice-list, .assignment-list, .resource-links {
     list-style: none;
-    padding-left: 0;
-    text-align: center;
 }
 
 .notice-list li, .assignment-list li {
@@ -100,8 +77,8 @@ h2 {
 }
 
 footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #3b5998;
+    background-color: #1e293b;
     color: white;
+    text-align: center;
+    padding: 10px 0;
 }
