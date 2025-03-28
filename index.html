@@ -1,223 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mīmāṁsā Math Portal</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/framer-motion@6.5.1/dist/framer-motion.umd.js"></script>
-    <style>
-        .parallax {
-            background-image: url('https://source.unsplash.com/1600x900/?math');
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-            height: 500px;
-        }
-
-        .neumorphic {
-            background: #e0e0e0;
-            border-radius: 12px;
-            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
-            padding: 20px;
-        }
-
-        body.dark {
-            background-color: #121212;
-            color: white;
-        }
-
-        body.dark .neumorphic {
-            background: #222;
-            box-shadow: 20px 20px 60px #1a1a1a, -20px -20px 60px #2a2a2a;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        #adminSection {
-            margin: 20px 0;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-    </style>
 </head>
-
-<body class="transition-colors duration-500">
+<body>
 
     <!-- Navbar -->
-    <nav class="p-6 flex justify-between items-center">
-        <h1 class="text-3xl font-bold">Mīmāṁsā Math Portal</h1>
-        <button id="darkModeToggle" class="px-4 py-2 rounded-lg bg-blue-500 text-white">Toggle Dark Mode</button>
-        <button id="loginButton" class="px-4 py-2 rounded-lg bg-green-500 text-white">Admin Login</button>
+    <nav class="navbar">
+        <h1>Mīmāṁsā Math Portal</h1>
+        <button id="darkModeToggle">Toggle Dark Mode</button>
     </nav>
 
     <!-- Parallax Section -->
-    <section class="parallax flex items-center justify-center text-white text-4xl font-bold animate__animated animate__fadeIn">
-        Explore the World of Mathematics
+    <section class="parallax">Explore the World of Mathematics</section>
+
+    <!-- Assignments Section -->
+    <section id="assignments" class="container"></section>
+
+    <!-- Progress Chart Section -->
+    <section>
+        <canvas id="progressChart"></canvas>
     </section>
 
-    <section class="container mx-auto p-12">
-        <h2 class="text-4xl font-bold mb-6 text-center">Assignments Tracker</h2>
-        <div id="assignmentsGrid" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3"></div>
+    <!-- Contact Form Section -->
+    <section id="contact">
+        <form>
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea placeholder="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
     </section>
 
-    <!-- Notices Section -->
-    <section id="notices" class="py-12">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-6">Notices</h2>
-            <ul id="noticesList" class="space-y-4"></ul>
-        </div>
-    </section>
-
-    <!-- Admin Section (Hidden by default) -->
-    <section id="adminSection" class="hidden">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold mb-4">Admin Controls</h2>
-
-            <!-- Add Assignment Form -->
-            <form id="addAssignmentForm" class="mb-6">
-                <input type="text" id="assignmentTitle" placeholder="Assignment Title" class="p-2 rounded-lg border">
-                <input type="text" id="assignmentDueDate" placeholder="Due Date" class="p-2 rounded-lg border">
-                <button type="submit" class="p-2 rounded-lg bg-blue-500 text-white">Add Assignment</button>
-            </form>
-
-            <!-- Add Notice Form -->
-            <form id="addNoticeForm">
-                <input type="text" id="noticeText" placeholder="Notice Text" class="p-2 rounded-lg border">
-                <button type="submit" class="p-2 rounded-lg bg-green-500 text-white">Add Notice</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Chart Section -->
-    <section class="py-12">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-4">Mathematics Progress</h2>
-            <canvas id="mathProgressChart" width="400" height="200"></canvas>
-        </div>
-    </section>
-
-    <footer class="p-6 text-center bg-gray-900 text-white">
-        &copy; 2025 Mīmāṁsā Math Portal - All Rights Reserved
-    </footer>
-
-    <script>
-        // Initial Assignments and Notices
-        const assignments = JSON.parse(localStorage.getItem('assignments')) || [
-            { title: 'Assignment 1: Number Theory', dueDate: '5th April 2025' },
-            { title: 'Assignment 2: Functions', dueDate: '12th April 2025' },
-            { title: 'Assignment 3: Calculus', dueDate: '19th April 2025' }
-        ];
-
-        const notices = JSON.parse(localStorage.getItem('notices')) || [
-            'Math Olympiad Registration Open!',
-            'Next Mīmāṁsā Meeting on 7th April 2025',
-            'Submit Assignments by Deadline'
-        ];
-
-        // DOM Elements
-        const assignmentsGrid = document.getElementById('assignmentsGrid');
-        const noticesList = document.getElementById('noticesList');
-
-        const displayAssignments = () => {
-            assignmentsGrid.innerHTML = '';
-            assignments.forEach(assignment => {
-                const div = document.createElement('div');
-                div.classList.add('p-6', 'neumorphic', 'rounded-lg', 'shadow-lg', 'hover:scale-105', 'transition', 'transform');
-                div.innerHTML = `<h3 class="text-2xl font-bold">${assignment.title}</h3><p>Due Date: ${assignment.dueDate}</p>`;
-                assignmentsGrid.appendChild(div);
-            });
-        };
-
-        const displayNotices = () => {
-            noticesList.innerHTML = '';
-            notices.forEach(notice => {
-                const li = document.createElement('li');
-                li.textContent = notice;
-                noticesList.appendChild(li);
-            });
-        };
-
-        displayAssignments();
-        displayNotices();
-
-        // Dark Mode Toggle
-        const toggleButton = document.getElementById('darkModeToggle');
-        toggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            localStorage.setItem('darkMode', document.body.classList.contains('dark'));
-        });
-
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark');
-        }
-
-        // Admin Login
-        const loginButton = document.getElementById('loginButton');
-        const adminSection = document.getElementById('adminSection');
-
-        loginButton.addEventListener('click', () => {
-            const password = prompt('Enter Admin Password:');
-            if (password === 'admin123') {
-                adminSection.classList.remove('hidden');
-            } else {
-                alert('Incorrect Password!');
-            }
-        });
-
-        // Add Assignment
-        const addAssignmentForm = document.getElementById('addAssignmentForm');
-        addAssignmentForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const title = document.getElementById('assignmentTitle').value;
-            const dueDate = document.getElementById('assignmentDueDate').value;
-            assignments.push({ title, dueDate });
-            localStorage.setItem('assignments', JSON.stringify(assignments));
-            displayAssignments();
-            alert('Assignment Added!');
-        });
-
-        // Add Notice
-        const addNoticeForm = document.getElementById('addNoticeForm');
-        addNoticeForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const noticeText = document.getElementById('noticeText').value;
-            notices.push(noticeText);
-            localStorage.setItem('notices', JSON.stringify(notices));
-            displayNotices();
-            alert('Notice Added!');
-        });
-
-        // Chart.js
-        const ctx = document.getElementById('mathProgressChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Assignment 1', 'Assignment 2', 'Assignment 3'],
-                datasets: [{
-                    label: 'Score Progress',
-                    data: [85, 90, 95],
-                    backgroundColor: ['rgba(75, 192, 192, 0.2)'],
-                    borderColor: ['rgba(75, 192, 192, 1)'],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: { beginAtZero: true }
-                }
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
-
 </html>
