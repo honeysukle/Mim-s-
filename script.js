@@ -1,48 +1,47 @@
-// Sample Assignments Data
-const assignments = [
-    { title: 'Assignment 1: Number Theory', dueDate: '5th April 2025' },
-    { title: 'Assignment 2: Functions', dueDate: '12th April 2025' },
-    { title: 'Assignment 3: Calculus', dueDate: '19th April 2025' }
-];
+// Admin Password
+const adminPassword = "mimamsa123";
 
-// Populate Assignments Section
-const assignmentsContainer = document.getElementById('assignments');
-assignments.forEach(assignment => {
-    const div = document.createElement('div');
-    div.innerHTML = `<h3>${assignment.title}</h3><p>Due Date: ${assignment.dueDate}</p>`;
-    assignmentsContainer.appendChild(div);
-});
+// DOM Elements
+const adminLoginSection = document.getElementById('adminLoginSection');
+const adminPanel = document.getElementById('adminPanel');
+const loginButton = document.getElementById('loginButton');
+const logoutButton = document.getElementById('logoutButton');
+const noticeForm = document.getElementById('noticeForm');
+const noticeList = document.getElementById('noticeList');
 
-// Chart.js for Progress Chart
-const ctx = document.getElementById('progressChart').getContext('2d');
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Assignment 1', 'Assignment 2', 'Assignment 3'],
-        datasets: [{
-            label: 'Score Progress',
-            data: [85, 90, 95],
-            backgroundColor: ['rgba(75, 192, 192, 0.2)'],
-            borderColor: ['rgba(75, 192, 192, 1)'],
-            borderWidth: 2
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            y: { beginAtZero: true }
-        }
+// Handle Login
+loginButton.addEventListener('click', function () {
+    const passwordInput = document.getElementById('adminPassword').value;
+    if (passwordInput === adminPassword) {
+        adminLoginSection.classList.add('hidden');
+        adminPanel.classList.remove('hidden');
+    } else {
+        alert("Incorrect password. Access denied.");
     }
 });
 
-// Dark Mode Toggle
-const toggleButton = document.getElementById('darkModeToggle');
-toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+// Handle Logout
+logoutButton.addEventListener('click', function () {
+    adminLoginSection.classList.remove('hidden');
+    adminPanel.classList.add('hidden');
 });
 
-// Load Dark Mode Preference
-if (localStorage.getItem('darkMode') === 'true') {
-    document.body.classList.add('dark');
-}
+// Handle Adding New Notices
+noticeForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const noticeMessage = document.getElementById('noticeMessage').value;
+    const noticeDate = document.getElementById('noticeDate').value;
+
+    if (noticeMessage && noticeDate) {
+        const li = document.createElement('li');
+        li.className = 'p-3 border border-gray-200 rounded-lg bg-gray-50 shadow';
+        li.textContent = `${noticeDate}: ${noticeMessage}`;
+        noticeList.appendChild(li);
+
+        document.getElementById('noticeMessage').value = '';
+        document.getElementById('noticeDate').value = '';
+    } else {
+        alert("Please enter both a notice and a date.");
+    }
+});
