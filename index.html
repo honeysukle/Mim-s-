@@ -4,77 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mīmāṁsā Math Portal</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.css">
     <style>
-        /* General Styling */
-        body {
-            font-family: 'Inter', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: white;
-            color: black;
-            transition: background-color 0.5s ease, color 0.5s ease;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
 
-        /* Navbar Styling */
+        body {
+            transition: background-color 0.5s ease;
+            color: #333;
+        }
+
         nav {
             position: fixed;
-            top: 0;
             width: 100%;
+            padding: 10px 20px;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
-            padding: 10px 20px;
             z-index: 10;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         nav h1 {
             font-size: 24px;
-            color: #007bff;
         }
 
-        nav button {
-            background: #007bff;
-            color: white;
-            padding: 10px 15px;
+        nav .toggle-button {
+            padding: 10px 20px;
             border: none;
             border-radius: 8px;
+            background-color: #007bff;
+            color: white;
             cursor: pointer;
-            margin-left: auto;
         }
 
-        nav button:hover {
-            background: #0056b3;
-        }
-
-        /* Parallax Section */
         .parallax {
             background-image: url('https://source.unsplash.com/1600x900/?math');
             height: 500px;
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
-            position: relative;
         }
 
-        .parallax h2 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 36px;
+        .section {
+            padding: 60px 20px;
             text-align: center;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         }
 
-        /* Assignments Section Neumorphic Design */
-        .assignments {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+        .assignments-section, .notices-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            padding: 40px 0;
+            padding: 40px;
         }
 
         .card {
@@ -82,7 +68,6 @@
             border-radius: 12px;
             box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
             padding: 20px;
-            width: 300px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -91,42 +76,14 @@
             box-shadow: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
         }
 
-        .card h3 {
-            color: #007bff;
-        }
-
-        /* Stylish Contact Form */
-        .contact-form {
-            padding: 40px;
-            text-align: center;
-        }
-
-        form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        form input, form textarea {
-            border: 2px solid #ccc;
-            border-radius: 8px;
+        .footer {
             padding: 10px;
-            width: 100%;
-            margin-bottom: 15px;
+            background: #f4f4f4;
+            text-align: center;
+            color: #666;
         }
 
-        form button {
-            background: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: none;
-        }
-
-        form button:hover {
-            background: #0056b3;
-        }
-
-        /* Dark Mode */
+        /* Dark Mode Styles */
         body.dark {
             background-color: #121212;
             color: white;
@@ -140,35 +97,58 @@
             background: #1e1e1e;
             box-shadow: 5px 5px 10px #121212, -5px -5px 10px #272727;
         }
-
-        .dark form input, .dark form textarea {
-            background-color: #1e1e1e;
-            color: white;
-        }
     </style>
 </head>
 <body>
 
 <nav>
     <h1>Mīmāṁsā Math Portal</h1>
-    <button id="darkModeToggle">Toggle Dark Mode</button>
+    <button class="toggle-button" id="darkModeToggle">Toggle Dark Mode</button>
 </nav>
 
-<div class="parallax">
-    <h2>Welcome to Mīmāṁsā Math Portal</h2>
-</div>
+<div class="parallax"></div>
 
-<section class="assignments" id="assignments"></section>
-
-<section class="contact-form">
-    <h2>Contact Us</h2>
-    <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" rows="4"></textarea>
-        <button type="submit">Send Message</button>
-    </form>
+<section class="section">
+    <h2>Explore the World of Mathematics</h2>
 </section>
+
+<section id="assignments" class="assignments-section">
+    <div class="card">
+        <h3>Assignment 1: Number Theory</h3>
+        <p>Due Date: 5th April 2025</p>
+    </div>
+    <div class="card">
+        <h3>Assignment 2: Functions</h3>
+        <p>Due Date: 12th April 2025</p>
+    </div>
+    <div class="card">
+        <h3>Assignment 3: Linear Algebra</h3>
+        <p>Due Date: 19th April 2025</p>
+    </div>
+</section>
+
+<section id="notices" class="notices-section">
+    <div class="card">
+        <h3>Notice 1</h3>
+        <p>Upcoming Math Olympiad Preparation: 1st May 2025.</p>
+    </div>
+    <div class="card">
+        <h3>Notice 2</h3>
+        <p>Special Workshop on Quantum Mechanics: 15th May 2025.</p>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Resources</h2>
+    <p>Download the latest reading material for your assignments:</p>
+    <a href="Reading.pdf" download="Mimamsa_Number_Theory_Reading.pdf">
+        <button>Download Reading Material</button>
+    </a>
+</section>
+
+<div class="footer">
+    <p>&copy; 2025 Mīmāṁsā Math Portal. All rights reserved.</p>
+</div>
 
 <script>
     // Toggle Dark Mode and Save Preference in LocalStorage
@@ -185,21 +165,6 @@
         if (darkModeSetting === 'enabled') {
             document.body.classList.add('dark');
         }
-    });
-
-    // Dynamic Assignments Section
-    const assignments = [
-        { title: 'Assignment 1: Number Theory', dueDate: '5th April 2025' },
-        { title: 'Assignment 2: Functions', dueDate: '12th April 2025' },
-        { title: 'Assignment 3: Linear Algebra', dueDate: '19th April 2025' }
-    ];
-
-    const assignmentsContainer = document.getElementById('assignments');
-    assignments.forEach((assignment) => {
-        const card = document.createElement('div');
-        card.classList.add('card');
-        card.innerHTML = `<h3>${assignment.title}</h3><p>Due Date: ${assignment.dueDate}</p>`;
-        assignmentsContainer.appendChild(card);
     });
 </script>
 
