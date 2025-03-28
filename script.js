@@ -1,47 +1,73 @@
-// Admin Password
-const adminPassword = "mimamsa123";
+import React, { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import "katex/dist/katex.min.css";
+import { InlineMath, BlockMath } from "react-katex";
 
-// DOM Elements
-const adminLoginSection = document.getElementById('adminLoginSection');
-const adminPanel = document.getElementById('adminPanel');
-const loginButton = document.getElementById('loginButton');
-const logoutButton = document.getElementById('logoutButton');
-const noticeForm = document.getElementById('noticeForm');
-const noticeList = document.getElementById('noticeList');
+function MimamsaMathPortal() {
+  const [notices, setNotices] = useState([
+    "Welcome to the Mīmāṁsā Math Portal! Here, you'll find assignments, notices, and interactive learning materials.",
+    "Next assignment: Submit your LaTeX-rendered math proof by March 31, 2025.",
+  ]);
 
-// Handle Login
-loginButton.addEventListener('click', function () {
-    const passwordInput = document.getElementById('adminPassword').value;
-    if (passwordInput === adminPassword) {
-        adminLoginSection.classList.add('hidden');
-        adminPanel.classList.remove('hidden');
-    } else {
-        alert("Incorrect password. Access denied.");
-    }
-});
+  const [password, setPassword] = useState("");
+  const handleLogin = () => {
+    alert("Feature Coming Soon! Backend support will be added later.");
+  };
 
-// Handle Logout
-logoutButton.addEventListener('click', function () {
-    adminLoginSection.classList.remove('hidden');
-    adminPanel.classList.add('hidden');
-});
+  return (
+    <div className="min-h-screen bg-gray-100 text-gray-900">
+      {/* Header */}
+      <header className="bg-blue-600 text-white text-center py-4 text-2xl font-bold">
+        Mīmāṁsā Math Portal
+      </header>
 
-// Handle Adding New Notices
-noticeForm.addEventListener('submit', function (e) {
-    e.preventDefault();
+      {/* Hero Section */}
+      <section className="bg-blue-500 py-10 text-center text-white">
+        <h1 className="text-4xl font-extrabold mb-2">Unlock the Power of Mathematics</h1>
+        <p className="text-lg font-medium">
+          Explore, Solve, and Collaborate with Mīmāṁsā Math Portal’s Interactive Features.
+        </p>
+      </section>
 
-    const noticeMessage = document.getElementById('noticeMessage').value;
-    const noticeDate = document.getElementById('noticeDate').value;
+      {/* Notices Section */}
+      <section className="p-6">
+        <h2 className="text-3xl font-semibold mb-4">Notices</h2>
+        <div className="grid gap-4">
+          {notices.map((notice, index) => (
+            <Card key={index} className="bg-white p-4 shadow hover:shadow-lg">
+              <CardContent>
+                <p>{notice}</p>
+                {index === 1 && (
+                  <BlockMath>\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}</BlockMath>
+                )}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
 
-    if (noticeMessage && noticeDate) {
-        const li = document.createElement('li');
-        li.className = 'p-3 border border-gray-200 rounded-lg bg-gray-50 shadow';
-        li.textContent = `${noticeDate}: ${noticeMessage}`;
-        noticeList.appendChild(li);
+      {/* Admin Login */}
+      <section className="p-6 text-center">
+        <h2 className="text-2xl font-semibold mb-4">Admin Login</h2>
+        <input
+          type="password"
+          placeholder="Enter admin password"
+          className="border border-gray-300 p-2 rounded w-1/3 mb-4"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button className="bg-blue-600 text-white hover:bg-blue-700" onClick={handleLogin}>
+          Login
+        </Button>
+      </section>
 
-        document.getElementById('noticeMessage').value = '';
-        document.getElementById('noticeDate').value = '';
-    } else {
-        alert("Please enter both a notice and a date.");
-    }
-});
+      {/* Footer */}
+      <footer className="bg-blue-600 text-white text-center py-4">
+        Mīmāṁsā Math Portal © 2025
+      </footer>
+    </div>
+  );
+}
+
+export default MimamsaMathPortal;
