@@ -4,24 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mīmāṃsā Math Portal</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-900">
-
     <header class="p-6 bg-blue-700 text-white text-center">
         <h1 class="text-5xl font-bold">Mīmāṃsā Math Portal</h1>
     </header>
 
     <main class="container mx-auto my-8">
-        <!-- Notices Section -->
         <section id="notices" class="bg-white shadow rounded-lg p-6 mb-6">
             <h2 class="text-4xl font-semibold mb-4">Notices</h2>
-            <ul id="noticeList" class="space-y-3">
-                <!-- Dynamic Notices will be added here -->
-            </ul>
+            <ul id="noticeList" class="space-y-3"></ul>
         </section>
 
-        <!-- Admin Login Section -->
         <section id="adminLoginSection" class="bg-white shadow rounded-lg p-6 text-center">
             <h2 class="text-3xl font-semibold mb-4">Admin Login</h2>
             <input type="password" id="adminPassword" placeholder="Enter Admin Password" 
@@ -31,11 +27,8 @@
             </button>
         </section>
 
-        <!-- Admin Panel (Hidden by Default) -->
         <section id="adminPanel" class="hidden bg-white shadow rounded-lg p-6">
             <h2 class="text-3xl font-semibold mb-4">Admin Dashboard</h2>
-            
-            <!-- Form to Add Notices -->
             <form id="noticeForm" class="space-y-4">
                 <div>
                     <label for="noticeMessage" class="block text-lg font-medium">Notice:</label>
@@ -61,59 +54,6 @@
         <p>Mīmāṃsā Math Portal © 2025</p>
     </footer>
 
-    <script>
-        // Admin Password (Set it securely!)
-        const adminPassword = "mimamsa123";
-
-        // DOM Elements
-        const adminLoginSection = document.getElementById('adminLoginSection');
-        const adminPanel = document.getElementById('adminPanel');
-        const loginButton = document.getElementById('loginButton');
-        const logoutButton = document.getElementById('logoutButton');
-        const noticeForm = document.getElementById('noticeForm');
-        const noticeList = document.getElementById('noticeList');
-
-        // Handle Login
-        loginButton.addEventListener('click', function () {
-            const passwordInput = document.getElementById('adminPassword').value;
-            if (passwordInput === adminPassword) {
-                adminLoginSection.classList.add('hidden');  // Hide login form
-                adminPanel.classList.remove('hidden');     // Show admin panel
-            } else {
-                alert("Incorrect password. Access denied.");
-            }
-        });
-
-        // Handle Logout
-        logoutButton.addEventListener('click', function () {
-            adminLoginSection.classList.remove('hidden');  // Show login form
-            adminPanel.classList.add('hidden');           // Hide admin panel
-        });
-
-        // Handle Adding New Notices
-        noticeForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const noticeMessage = document.getElementById('noticeMessage').value;
-            const noticeDate = document.getElementById('noticeDate').value;
-
-            if (noticeMessage && noticeDate) {
-                // Create a new list item with the notice message and date
-                const li = document.createElement('li');
-                li.className = 'p-3 border border-gray-200 rounded-lg bg-gray-50 shadow';
-                li.textContent = `${noticeDate}: ${noticeMessage}`;
-
-                // Add the notice to the list
-                noticeList.appendChild(li);
-
-                // Clear form inputs
-                document.getElementById('noticeMessage').value = '';
-                document.getElementById('noticeDate').value = '';
-            } else {
-                alert("Please enter both a notice and a date.");
-            }
-        });
-    </script>
-
+    <script src="script.js"></script> <!-- External JS File -->
 </body>
 </html>
