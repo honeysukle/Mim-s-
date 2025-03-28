@@ -1,97 +1,76 @@
-/* General Reset */
-* {
+/* General Styling */
+body {
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Light and Dark Mode Transition */
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Poppins', sans-serif;
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Variables for Theme */
-:root {
-    --bg-color: #f7f7f7;
-    --text-color: #333;
-    --card-color: rgba(255, 255, 255, 0.7);
-    --button-color: #007bff;
-}
-
-body.dark-mode {
-    --bg-color: #1a1a1a;
-    --text-color: #f1f1f1;
-    --card-color: rgba(0, 0, 0, 0.7);
+    transition: background-color 0.5s ease;
 }
 
 /* Navbar Styling */
-.navbar {
-    background-color: var(--bg-color);
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
+nav {
+    position: fixed;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
     z-index: 10;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Hero Section with Parallax Effect */
-.hero {
-    background-image: url('path/to/parallax-bg.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Glassmorphism Cards */
+/* Assignments Neumorphic Design */
 .card {
-    background-color: var(--card-color);
-    backdrop-filter: blur(8px);
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    margin: 1rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
 }
 
-/* Toggle Button for Dark Mode */
-.toggle-btn {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background-color: var(--button-color);
-    border: none;
+/* Parallax Section Styling */
+.parallax {
+    background-image: url('https://source.unsplash.com/1600x900/?math');
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Dark Mode Styling */
+body.dark {
+    background-color: #121212;
     color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    cursor: pointer;
 }
 
-/* Animations */
-.section {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s forwards;
+.dark nav {
+    background: rgba(0, 0, 0, 0.8);
 }
 
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.dark .card {
+    background: #1e1e1e;
+    box-shadow: 5px 5px 10px #121212, -5px -5px 10px #272727;
+}
+
+/* Stylish Contact Form */
+form input,
+form textarea {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+}
+
+button:hover {
+    background: #0056b3;
 }
