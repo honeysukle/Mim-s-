@@ -3,92 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mīmāṃsā Math Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Mīmāṁsā Math Portal</title>
     <link rel="icon" href="favicon.ico">
-    <script src="script.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Custom Styling for Backgrounds and Parallax */
+        .main-section {
+            background-image: url('math-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #1a202c;
+            color: #f7fafc;
+        }
+
+        .dark-mode .btn {
+            background-color: #4a5568;
+            color: white;
+        }
+    </style>
+    <script>
+        AOS.init(); // Initialize AOS (Animate on Scroll)
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
 </head>
-<body>
+<body class="font-sans bg-gray-100">
+
     <!-- Navigation Bar -->
     <header>
-        <nav>
-            <ul class="navbar">
-                <li><a href="#home" class="logo">Mīmāṃsā Math Portal</a></li>
-                <li><a href="#notices">Notices</a></li>
-                <li><a href="#assignments">Assignments</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        <nav class="fixed w-full bg-black text-white z-50 shadow-lg">
+            <div class="container mx-auto p-4 flex justify-between items-center">
+                <a href="#home" class="text-2xl font-bold">Mīmāṁsā Math Portal</a>
+                <ul class="flex space-x-4">
+                    <li><a href="#notices" class="hover:text-blue-300">Notices</a></li>
+                    <li><a href="#assignments" class="hover:text-blue-300">Assignments</a></li>
+                    <li><a href="#resources" class="hover:text-blue-300">Resources</a></li>
+                    <li><a href="#contact" class="hover:text-blue-300">Contact</a></li>
+                    <li><button onclick="toggleDarkMode()" class="ml-4 p-2 border rounded-lg bg-gray-700 hover:bg-gray-500">Toggle Dark Mode</button></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="main-section">
-        <div class="welcome">
-            <h1>Welcome to Mīmāṃsā</h1>
-            <p>Where Mathematics Meets Curiosity and Research Begins</p>
-            <a href="#notices" class="btn">View Notices</a>
+    <!-- Hero Section with Parallax Effect -->
+    <section id="home" class="main-section min-h-screen flex items-center justify-center text-center text-white">
+        <div>
+            <h1 class="text-5xl font-extrabold mb-4">Welcome to Mīmāṁsā</h1>
+            <p class="text-xl mb-6">Where Mathematics Meets Curiosity and Research Begins</p>
+            <a href="#notices" class="bg-white text-blue-600 px-6 py-3 rounded-full hover:bg-blue-100 transition transform hover:scale-105">View Notices</a>
         </div>
     </section>
 
-    <!-- Notices Section -->
-    <section id="notices">
-        <div class="container">
-            <h2>Important Notices</h2>
-            <ul class="notice-list">
-                <li><i class="fas fa-bell"></i> Upcoming Seminar: "Number Theory" – 14th April 2025</li>
-                <li><i class="fas fa-book"></i> Assignment Submission Deadline Extended to 10th April 2025</li>
-                <li><i class="fas fa-graduation-cap"></i> Workshop: "Advanced Number Theory"</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Assignments Section -->
-    <section id="assignments">
-        <div class="container">
-            <h2>Assignments</h2>
-            <p>Weekly assignments designed to enhance your mathematical problem-solving skills.</p>
-            <ul class="assignment-list">
-                <li><i class="fas fa-pencil-alt"></i> Assignment 1: Number Theory – Due 5th April 2025</li>
-                <li><i class="fas fa-pencil-alt"></i> Assignment 2: Functions – Due 12th April 2025</li>
-                <li><i class="fas fa-file-pdf"></i> 
-                    <a href="Reading.pdf" download>Download Assignment PDF</a>
+    <!-- Notices Section with AOS Animation -->
+    <section id="notices" data-aos="fade-up" class="py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">Important Notices</h2>
+            <ul class="space-y-4">
+                <li class="bg-white shadow-lg p-4 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-bell text-blue-600 mr-4"></i> Upcoming Seminar: "Number Theory" – 14th April 2025
+                </li>
+                <li class="bg-white shadow-lg p-4 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-book text-green-600 mr-4"></i> Assignment Submission Deadline Extended to 10th April 2025
+                </li>
+                <li class="bg-white shadow-lg p-4 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-graduation-cap text-purple-600 mr-4"></i> Workshop: "Advanced Number Theory"
                 </li>
             </ul>
         </div>
     </section>
 
-    <!-- Resources Section -->
-    <section id="resources">
-        <div class="container">
-            <h2>Resources</h2>
-            <p>Explore valuable materials to deepen your understanding of advanced mathematics:</p>
-            <ul class="resource-links">
-                <li><a href="https://arxiv.org/" target="_blank"><i class="fas fa-external-link-alt"></i> ArXiv - Mathematics Research Papers</a></li>
-                <li><a href="https://mathworld.wolfram.com/" target="_blank"><i class="fas fa-external-link-alt"></i> Wolfram MathWorld</a></li>
-                <li><a href="https://ocw.mit.edu/courses/mathematics/" target="_blank"><i class="fas fa-external-link-alt"></i> MIT OpenCourseWare – Mathematics</a></li>
+    <!-- Assignments Section with Cards -->
+    <section id="assignments" class="bg-gray-200 py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">Assignments</h2>
+            <p class="mb-8">Weekly assignments designed to enhance your mathematical problem-solving skills.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div class="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl">
+                    <h3 class="text-2xl font-bold mb-2">Assignment 1: Number Theory</h3>
+                    <p>Due Date: 5th April 2025</p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl">
+                    <h3 class="text-2xl font-bold mb-2">Assignment 2: Functions</h3>
+                    <p>Due Date: 12th April 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section with External Links -->
+    <section id="resources" class="py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">Resources</h2>
+            <ul class="space-y-4">
+                <li><a href="https://arxiv.org/" target="_blank" class="text-blue-500 hover:underline">ArXiv - Mathematics Research Papers</a></li>
+                <li><a href="https://mathworld.wolfram.com/" target="_blank" class="text-blue-500 hover:underline">Wolfram MathWorld</a></li>
+                <li><a href="https://ocw.mit.edu/courses/mathematics/" target="_blank" class="text-blue-500 hover:underline">MIT OpenCourseWare – Mathematics</a></li>
             </ul>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>If you have any questions or would like to collaborate, feel free to reach out!</p>
-            <form id="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn">Send Message</button>
+    <!-- Contact Section with Form -->
+    <section id="contact" class="bg-gray-300 py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6">Contact Us</h2>
+            <p class="mb-4">If you have any questions or would like to collaborate, feel free to reach out!</p>
+            <form id="contact-form" class="bg-white p-8 rounded-lg shadow-lg mx-auto w-full md:w-1/2">
+                <input type="text" placeholder="Your Name" required class="w-full mb-4 p-2 border rounded-lg">
+                <input type="email" placeholder="Your Email" required class="w-full mb-4 p-2 border rounded-lg">
+                <textarea placeholder="Your Message" required class="w-full mb-4 p-2 border rounded-lg"></textarea>
+                <button type="submit" class="w-full p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Send Message</button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p>© 2025 Mīmāṃsā Math Portal. All Rights Reserved. <a href="#home">Back to Top</a></p>
+    <footer class="bg-black text-white py-4">
+        <p class="text-center">&copy; 2025 Mīmāṁsā Math Portal. Follow us on: 
+            <a href="#" class="text-blue-400"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-blue-400"><i class="fab fa-twitter"></i></a>
+        </p>
+        <p class="text-center"><a href="#home" class="hover:underline">Back to Top</a></p>
     </footer>
 
 </body>
